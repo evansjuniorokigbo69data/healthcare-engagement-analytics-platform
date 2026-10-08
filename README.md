@@ -8,6 +8,16 @@ The objective is to provide a scalable analytics layer that enables business use
 
 ---
 
+## Dataset Source
+
+This project is built using the CMS Medicare Part D Prescriber dataset available through Google BigQuery Public Datasets.
+
+Dataset:
+
+`bigquery-public-data.cms_medicare.part_d_prescriber_2014`
+
+---
+
 ## Business Problem
 
 Healthcare organisations collect large volumes of prescription data, but raw data alone does not support effective decision-making.
@@ -24,29 +34,22 @@ This project builds the analytics layer required to support those needs.
 
 ---
 
+## Why This Architecture?
+
+The project follows Analytics Engineering best practices by separating:
+
+- Raw ingestion
+- Data preparation
+- Business entities
+- Transactional facts
+- Business metrics
+- Data quality monitoring
+
+This approach improves scalability, consistency, maintainability, and trust in analytical outputs.
+
+---
+
 ## Architecture
-
-The solution follows a layered Analytics Engineering approach:
-
-CMS Medicare Dataset
-        ↓
-raw_prescriptions
-        ↓
-stg_prescriptions
-        ↓
-dim_physician
-dim_drug
-dim_state
-        ↓
-fct_prescriptions
-        ↓
-mrt_specialty_performance
-mrt_drug_performance
-mrt_physician_performance
-mrt_state_performance
-        ↓
-Power BI / Looker Studio
-```
 
 ### Architecture Diagram
 
@@ -99,17 +102,20 @@ screenshots/bigquery_data_model.png
 
 ---
 
-## Metrics Layer Example
+## Business Metrics
 
-The metrics layer exposes reusable KPIs that can be consumed by dashboards, business users, and future analytical applications.
+The platform exposes reusable analytical metrics including:
 
-Examples include:
-
-- Prescription Volume
-- Drug Cost Analysis
-- Beneficiary Analysis
+- Total Prescriptions
+- Total Drug Cost
+- Total Beneficiaries
+- Cost per Prescription
 - Specialty Performance
+- Drug Performance
+- Physician Performance
 - Regional Performance
+
+### Metrics Layer Example
 
 screenshots/metrics_layer_example.png
 
