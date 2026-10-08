@@ -2,17 +2,17 @@
 
 ## Overview
 
-This project demonstrates how raw healthcare prescription data can be transformed into trusted analytical datasets, reusable business metrics, and reporting assets through modern Analytics Engineering practices.
+This project demonstrates how raw healthcare prescription data can be transformed into trusted analytical datasets, reusable business metrics, and reporting assets using modern Analytics Engineering practices.
 
-The goal is to provide a scalable analytics layer that enables business users to analyse physician activity, drug adoption, healthcare spending, and regional performance consistently across the organisation.
+The objective is to provide a scalable analytics layer that enables business users to analyse physician activity, drug adoption, healthcare spending, and regional performance consistently across the organisation.
 
 ---
 
 ## Business Problem
 
-Healthcare organisations collect large amounts of prescription data, but raw data alone does not support decision-making.
+Healthcare organisations collect large volumes of prescription data, but raw data alone does not support effective decision-making.
 
-Teams need:
+Business teams require:
 
 - Trusted KPI definitions
 - Reusable analytical datasets
@@ -26,40 +26,37 @@ This project builds the analytics layer required to support those needs.
 
 ## Architecture
 
+The solution follows a layered Analytics Engineering approach:
+
 CMS Medicare Dataset
-
-↓
-
+        ↓
 raw_prescriptions
-
-↓
-
+        ↓
 stg_prescriptions
-
-↓
-
+        ↓
 dim_physician
 dim_drug
 dim_state
-
-↓
-
+        ↓
 fct_prescriptions
-
-↓
-
+        ↓
 mrt_specialty_performance
 mrt_drug_performance
 mrt_physician_performance
 mrt_state_performance
-
-↓
-
+        ↓
 Power BI / Looker Studio
+```
+
+### Architecture Diagram
+
+architecture/architecture.png
 
 ---
 
 ## Data Model
+
+The platform is structured following modern data warehousing and analytics engineering principles.
 
 ### Raw Layer
 
@@ -94,13 +91,35 @@ Core prescription activity table.
 - mrt_physician_performance
 - mrt_state_performance
 
-Reusable metrics used for analytics and reporting.
+Reusable business metrics used for analytics and reporting.
+
+### BigQuery Data Model
+
+screenshots/bigquery_data_model.png
+
+---
+
+## Metrics Layer Example
+
+The metrics layer exposes reusable KPIs that can be consumed by dashboards, business users, and future analytical applications.
+
+Examples include:
+
+- Prescription Volume
+- Drug Cost Analysis
+- Beneficiary Analysis
+- Specialty Performance
+- Regional Performance
+
+screenshots/metrics_layer_example.png
 
 ---
 
 ## Data Quality
 
-Validation layer included:
+A dedicated data quality layer is included to validate the reliability of analytical outputs.
+
+Checks include:
 
 - Missing physician identifiers
 - Missing drug names
@@ -111,6 +130,10 @@ Implemented through:
 
 - dq_prescriptions
 
+### Data Quality Validation
+
+screenshots/data_quality_checks.png
+
 ---
 
 ## Technologies
@@ -120,7 +143,7 @@ Implemented through:
 - Data Modelling
 - Analytics Engineering
 - Power BI / Looker Studio
-- Google Cloud Platform
+- Google Cloud Platform (GCP)
 
 ---
 
@@ -131,5 +154,20 @@ Implemented through:
 - KPI Framework Development
 - Data Quality Monitoring
 - SQL Transformations
-- Business Metrics Layer
+- Business Metrics Layer Design
 - Analytics Engineering
+- Data Warehousing Concepts
+- Healthcare Analytics
+
+---
+
+## Future Improvements
+
+Potential future enhancements include:
+
+- dbt implementation
+- Automated testing framework
+- Data lineage documentation
+- Advanced semantic layer
+- Machine Learning and AI-ready datasets
+- Workflow orchestration (Airflow / Prefect)
